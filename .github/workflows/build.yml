@@ -27,7 +27,7 @@ jobs:
         run: mvn -B deploy
         env:
           # GITHUB_TOKEN is provided by default in the repo with read/write access to Github Packages
-          GITHUB_TOKEN: ${{ secretse.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: mkdir dist && cp target/*.jar dist
 
