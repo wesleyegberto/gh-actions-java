@@ -15,6 +15,10 @@ jobs:
         with:
           java-version: 11
           architecture: x64
+          # When using Maven Central Repository
+          # server-id: ossrh
+          # server-username: MAVEN_USERNAME
+          # server-password: MAVEN_PASSWORD
 
       - name: Cache Maven packages
         uses: actions/cache@v2
@@ -28,6 +32,9 @@ jobs:
         env:
           # GITHUB_TOKEN is provided by default in the repo with read/write access to Github Packages
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # When using Maven Central Repository
+          # MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          # MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
       - run: mkdir dist && cp target/*.jar dist
 
