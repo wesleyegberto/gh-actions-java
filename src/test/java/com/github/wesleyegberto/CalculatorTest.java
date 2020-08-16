@@ -14,7 +14,7 @@ public class CalculatorTest {
 	}
 
 	@Test
-	@DisplayName("😱")
+	@DisplayName("42 is the answer 😱")
 	public void shouldProvideCorrectAnswer() {
 		Assertions.assertEquals(42, cut.calculate());
 	}
