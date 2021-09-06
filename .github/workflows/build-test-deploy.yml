@@ -1,4 +1,4 @@
-name: Java Workflow Example
+name: Java Workflow Example - Build, Test and Deploy
 
 on: [push]
 
@@ -6,12 +6,11 @@ jobs:
   build:
     name: Build, Test and Pack
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v2
         with:
           java-version: 11
           architecture: x64
@@ -27,6 +26,32 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Maven Test
+        run: mvn test
+
+      - run: mkdir coverage-report && cp -r target/site/jacoco/* coverage-report
+
+      - name: Publish Test Report
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Test Coverage Report
+          path: coverage-report
+
+
+  deploy:
+    name: Deploy to Github Repository
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Maven Build and Publish
         run: mvn -B deploy
         env:

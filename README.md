@@ -2,13 +2,19 @@
 
 Example to test Github Actions with Java.
 
-Workflow:
+Workflows:
+
+**Branch master**
+
+Simple workflow to build, test and deploy.
 
 - Checkout
 - Environment setup:
   - JDK 11
   - Maven packages caching
-- Maven build and deploy to Github Packages
+- Maven build
+- Maven test
+- Mave deploy to Github Packages
 - Upload artifact to Github to be available to download
 
 Example of workflow runs:
