@@ -42,10 +42,11 @@ jobs:
       - name: Create status check
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY : ${{ env.GITHUB_REPOSITORY }}
         run: |
           BUILD_COMMIT=$(git rev-parse HEAD)
           curl -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/{org}/{repo}/check-runs \
+            "https://api.github.com/repos/$GITHUB_REPOSITORY/check-runs" \
             -d '{"name":"build", "head_sha": "'"$BUILD_COMMIT"'", "status": "completed", "conclusion": "success" }'
