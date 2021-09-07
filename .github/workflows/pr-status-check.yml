@@ -6,7 +6,7 @@ on:
 
 jobs:
   check-build-test:
-    name: "Check build and test"
+    name: "PR Status Check - build and test"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
