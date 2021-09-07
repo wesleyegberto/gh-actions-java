@@ -11,8 +11,6 @@ jobs:
   release:
     name: Publish new release
     runs-on: ubuntu-latest
-    environment:
-      name: production
     if: github.event.pull_request.merged == true # only merged pull requests must trigger this job
     steps:
       - name: Extract version from branch name (for release branches)
