@@ -20,7 +20,7 @@ Example to test Github Actions with Java.
 
 Workflows:
 
-**Branch master**
+**Java Workflow Example - Build, Test and Deploy**
 
 Simple workflow to build, test and deploy.
 
@@ -36,6 +36,21 @@ Simple workflow to build, test and deploy.
 Example of workflow runs:
 
 ![Results](imgs/workflow-print.png)
+
+**Draft new release**
+
+Manual workflow to create a branch release to be merged if the workflow passes.
+
+- Create a branch with the format `release/x.y.z`
+- Build, test and upload the test output to be verified
+- After the tests it opens a PR to master to be merged
+
+**Publish new release**
+
+Workflow to release the builds after a branch `release/x.y.z` is merged.
+
+- Create a new release
+- Open a PR to develop branch
 
 ## Links
 
