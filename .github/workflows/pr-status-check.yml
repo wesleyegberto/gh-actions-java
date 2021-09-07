@@ -1,4 +1,4 @@
-name: "Status Check"
+name: "PR Status Check"
 
 on:
   pull_request:
