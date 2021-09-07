@@ -71,7 +71,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           head: release/${{ github.event.inputs.version }}
-          base: main
+          base: master
           title: Release version ${{ github.event.inputs.version }}
           reviewers: ${{ github.actor }}
           body: |
