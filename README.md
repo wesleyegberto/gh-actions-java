@@ -16,7 +16,7 @@
 
 ## Description
 
-Example to test Github Actions with Java.
+Repository to test different Github Actions with Java.
 
 Workflows:
 
